@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% block title %}Mood analyzer{% endblock %}{% block crumb %}Mood analyzer{% endblock %}
+{% block content %}
+<div class="page-intro"><div><div class="eyebrow"><span class="eyebrow-line"></span>01 / UNDERSTAND</div><h1>Put it into <span class="gradient-text">words.</span></h1><p>Describe what's on your mind. Your words are the starting point — not a verdict.</p></div><div class="intro-stamp"><i data-icon="spark"></i><span>GENTLE<br>SELF-REFLECTION</span></div></div>
+<div class="analyzer-layout">
+ <section class="panel analyzer-input-panel"><div class="panel-heading"><div><span class="eyebrow">YOUR CHECK-IN</span><h3>What's been on your mind?</h3></div><span class="step-tag">01 <b>—</b> 02</span></div>
+ <p class="field-hint">Write freely about your day, a moment, or anything you're processing. There's no perfect way to do this.</p>
+ <textarea id="moodText" class="mood-textarea" maxlength="5000" placeholder="Today felt like a lot. I had so many things to do, but one conversation made me feel understood..."></textarea>
+ <div class="textarea-meta"><span><i data-icon="lock"></i> Your entry is saved locally with your result.</span><span id="moodCount">0 / 5,000</span></div>
+ <div class="prompt-suggestions"><span>NEED A STARTING POINT?</span><button data-fill="Something that stayed with me today was...">Something that stayed with me</button><button data-fill="Right now, I'm finding it hard to...">Something that's hard</button><button data-fill="One thing I'm looking forward to is...">Something I'm looking forward to</button></div>
+ <button id="analyzeBtn" class="btn btn-primary btn-wide"><span>Explore my mood</span><i data-icon="arrow-right"></i></button>
+ <div class="privacy-note"><i data-icon="info"></i> AI interpretations can miss context. Use this as a prompt for reflection, not a diagnosis.</div>
+ </section>
+ <aside class="analyzer-aside"><div class="aside-art panel"><div class="mood-visual"><div class="visual-ring vr1"></div><div class="visual-ring vr2"></div><div class="visual-center">✳</div><div class="visual-particle p1"></div><div class="visual-particle p2"></div><div class="visual-particle p3"></div></div><span class="eyebrow">A MOMENT OF CLARITY</span><h3>Every feeling<br>has a story.</h3><p>Emotions are signals, not instructions. Get curious about what yours might be telling you.</p></div><div class="mini-tip"><span class="tip-icon"><i data-icon="lightbulb"></i></span><div><strong>Try being specific</strong><p>Small details and context can help the model interpret your words more thoughtfully.</p></div></div></aside>
+</div>
+<section class="panel result-panel" id="analysisResult" hidden>
+ <div class="result-top"><div><span class="eyebrow">YOUR REFLECTION SNAPSHOT</span><h2>Here's what your words <span class="gradient-text">may be carrying.</span></h2></div><span class="result-badge"><i data-icon="spark"></i> AI INTERPRETATION</span></div>
+ <div class="result-main"><div class="emotion-feature"><div class="result-orb" id="resultOrb"><span id="resultLetter">✳</span></div><div class="emotion-name" id="resultEmotion">Calm</div><div class="confidence-line"><span id="resultConfidence">—</span> interpretation strength</div><div class="confidence-track"><span id="confidenceFill"></span></div></div>
+ <div class="result-details"><p id="resultExplanation"></p><div class="reflection-question"><span> A QUESTION TO SIT WITH</span><strong id="resultQuestion"></strong></div><div class="suggestion-box"><i data-icon="spark"></i><p id="resultSuggestion"></p></div></div></div>
+ <div class="distribution-area"><div class="distribution-heading"><strong>Emotional tone distribution</strong><small>Relative signals · not clinical probabilities</small></div><div id="distributionBars" class="distribution-bars"></div></div>
+ <div class="result-foot"><span id="modelNote">Model interpretation</span><button class="btn btn-outline btn-small" onclick="document.getElementById('moodText').focus()">Reflect again <i data-icon="refresh"></i></button></div>
+</section>
+{% endblock %}
